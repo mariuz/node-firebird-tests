@@ -19,9 +19,7 @@ http.createServer(function (req, res) {
      }     
      con.query('select * from test',function(err,rs){
      var rows = rs.fetchSync("all",false); 
-     con.commit(function(){
-         lock = false;
-     });
+     con.commit();
      
      res.write('[');
      rows.forEach(function(r){

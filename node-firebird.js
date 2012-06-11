@@ -4,10 +4,6 @@ var util = require('util');
 var events = require('events');
 var http = require('http');
 
-var block = new events.EventEmitter();
-
-var lock = false;
-
 var con =  new fb.Database('127.0.0.1', 3050, cfg.db, cfg.user, cfg.password, 
     function(){
     
@@ -16,7 +12,7 @@ http.createServer(function (req, res) {
     
     
     function doReq(){
-    //con.execute("select * from rdb$relations", function(rs){
+
     con.execute("select * from test", function(rs){
     
     res.write('[');
@@ -24,7 +20,7 @@ http.createServer(function (req, res) {
      res.write(JSON.stringify(r)+',');
     });
     res.end(']');
-    lock = false;
+
     
     },function(err){ console.log(err);});
     }
