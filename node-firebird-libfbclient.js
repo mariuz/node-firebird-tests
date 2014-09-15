@@ -1,5 +1,5 @@
 var cfg = require("./config").cfg;
-var fb = require('../node_firebird/firebird');
+var fb = require('firebird');
 var util = require('util');
 var events = require('events');
 
